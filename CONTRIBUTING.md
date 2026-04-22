@@ -1,4 +1,4 @@
-# Contributing to 7Deer Skills
+# Contributing to wdm Skills
 
 Thanks for contributing.
 

@@ -2,7 +2,7 @@
 name: gefei-seo-monetization
 description: 哥飞「流量四板斧 + Adsense 变现」完整闭环。从 Google 免费 SEO 流量获取，到 Adsense 广告变现公式，到付费转化率优化。适用于独立站、AI 工具站、内容站变现。
 version: 1.0.0
-author: 7deer
+author: wdm
 tags: [seo, monetization, adsense, traffic, go-global]
 ---
 

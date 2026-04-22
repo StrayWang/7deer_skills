@@ -1,4 +1,4 @@
-# 🛠️ 7Deer Skills — Agent Skills 开放标准技能库
+# 🛠️ wdm Skills — Agent Skills 开放标准技能库
 
 > 25 个可复用的 AI Agent 技能模块，基于 [Agent Skills 开放标准](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)构建。
 > 克隆到项目中，你的 AI Agent 即可自动发现并加载这些能力。
@@ -35,7 +35,7 @@
 
 ```bash
 # 克隆到项目的 skills 目录，Agent 自动加载
-git clone https://github.com/StrayWang/7deer_skills.git .agent/skills
+git clone https://github.com/StrayWang/wdm_skills.git .agent/skills
 ```
 
 就这样。你的 Agent 会自动扫描每个 `SKILL.md` 的 name 和 description，在你的请求匹配时自动激活对应技能。
@@ -61,16 +61,16 @@ git clone https://github.com/StrayWang/7deer_skills.git .agent/skills
 
 ```bash
 # Claude Code / Kiro / VS Code Copilot / Codex / Gemini CLI（通用）
-git clone https://github.com/StrayWang/7deer_skills.git .agent/skills
+git clone https://github.com/StrayWang/wdm_skills.git .agent/skills
 
 # Cursor（也支持 .agent/skills，或复制到 .cursor/skills）
-git clone https://github.com/StrayWang/7deer_skills.git .agent/skills
+git clone https://github.com/StrayWang/wdm_skills.git .agent/skills
 
 # Hermes（全局安装，所有项目共享）
-git clone https://github.com/StrayWang/7deer_skills.git ~/.hermes/skills/7deer
+git clone https://github.com/StrayWang/wdm_skills.git ~/.hermes/skills/wdm
 
 # 只要一个技能？直接复制文件夹
-cp -r 7deer_skills/google-trends-to-pages .agent/skills/
+cp -r wdm_skills/google-trends-to-pages .agent/skills/
 ```
 
 ### 技能如何工作
@@ -174,27 +174,27 @@ cp -r 7deer_skills/google-trends-to-pages .agent/skills/
 
 ```bash
 # 在项目根目录执行，适用于 Claude Code / Kiro / VS Code Copilot / Codex / Gemini CLI
-git clone https://github.com/StrayWang/7deer_skills.git .agent/skills
+git clone https://github.com/StrayWang/wdm_skills.git .agent/skills
 ```
 
 ### 方法 2: Git Submodule（团队协作推荐）
 
 ```bash
-git submodule add https://github.com/StrayWang/7deer_skills.git .agent/skills
+git submodule add https://github.com/StrayWang/wdm_skills.git .agent/skills
 ```
 
 ### 方法 3: npx 一键安装（无需 git）
 
 ```bash
 # 下载到当前项目
-npx degit kennyzir/7deer_skills .agent/skills
+npx degit kennyzir/wdm_skills .agent/skills
 ```
 
 ### 方法 4: 只要某个技能
 
 ```bash
 # 只复制你需要的技能
-npx degit kennyzir/7deer_skills/google-trends-to-pages .agent/skills/google-trends-to-pages
+npx degit kennyzir/wdm_skills/google-trends-to-pages .agent/skills/google-trends-to-pages
 ```
 
 ### 安装后验证
@@ -297,7 +297,7 @@ intent = classify_intent("best ai logo generator for small business")
 ## 📁 目录结构
 
 ```
-7deer_skills/
+wdm_skills/
 ├── README.md                          # 本文档
 ├── CONTRIBUTING.md                    # 贡献指南
 ├── SECURITY.md                        # 安全说明
@@ -507,7 +507,7 @@ MIT License - 开源分享，欢迎使用和贡献。详见 [LICENSE](./LICENSE)
 ## 📧 联系方式
 
 - GitHub: [@kennyzir](https://github.com/kennyzir)
-- Repository: [7deer_skills](https://github.com/StrayWang/7deer_skills)
+- Repository: [wdm_skills](https://github.com/StrayWang/wdm_skills)
 
 ---
 

@@ -2,7 +2,7 @@
 name: go-global-product-launch
 description: 出海 AI 产品从 0 到盈利完整闭环。整合哥飞「SEO 免费流量」体系与刘小排「AI 产品开发」方法论。适用于独立开发者、小团队快速验证并上线出海 AI 工具站。
 version: 1.0.0
-author: 7deer
+author: wdm
 tags: [go-global, ai-product, seo, monetization, launch]
 ---
 

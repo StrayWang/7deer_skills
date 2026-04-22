@@ -40,7 +40,7 @@
     <rect x="73" y="73" width="1134" height="494" rx="27" stroke="url(#panelStroke)" stroke-opacity="0.6" stroke-width="2"/>
   </g>
 
-  <text x="112" y="176" fill="white" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="44" font-weight="700">7Deer Skills</text>
+  <text x="112" y="176" fill="white" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="44" font-weight="700">wdm Skills</text>
   <text x="112" y="226" fill="#C5DDF0" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="22" font-weight="400">
     <tspan x="112" dy="0">Reusable skills for SEO automation, content pipelines,</tspan>
     <tspan x="112" dy="30">and AI agent workflows</tspan>
@@ -97,5 +97,5 @@
   </g>
 
   <text x="112" y="522" fill="#DBB6FF" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20" font-weight="600">Open source repository</text>
-  <text x="330" y="522" fill="#C5DDF0" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20">github.com/StrayWang/7deer_skills</text>
+  <text x="330" y="522" fill="#C5DDF0" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20">github.com/StrayWang/wdm_skills</text>
 </svg>

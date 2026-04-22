@@ -22,7 +22,7 @@ function New-RoundedRectPath {
 $width = 1280
 $height = 640
 $outputDir = Join-Path $PSScriptRoot "..\assets"
-$outputPath = Join-Path $outputDir "social-preview-7deer.png"
+$outputPath = Join-Path $outputDir "social-preview-wdm.png"
 
 if (-not (Test-Path $outputDir)) {
     New-Item -ItemType Directory -Path $outputDir | Out-Null
@@ -73,7 +73,7 @@ $chipBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromA
 $panelBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(72, 8, 18, 36))
 $footerBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 173, 214, 255))
 
-$graphics.DrawString("7Deer Skills", $titleFont, $whiteBrush, 112, 128)
+$graphics.DrawString("wdm Skills", $titleFont, $whiteBrush, 112, 128)
 $graphics.DrawString("Reusable skills for SEO automation, content pipelines, and AI agent workflows", $subtitleFont, $mutedBrush, 112, 200)
 
 $chips = @("SEO automation", "content pipelines", "AI agents", "Next.js", "Python")
@@ -123,7 +123,7 @@ $graphics.DrawLine($arrowPen, 984, 220, 1024, 244)
 $graphics.DrawLine($arrowPen, 1024, 334, 984, 358)
 
 $graphics.DrawString("Open source repository", $bodyFont, $footerBrush, 112, 518)
-$graphics.DrawString("github.com/StrayWang/7deer_skills", $bodyFont, $mutedBrush, 332, 518)
+$graphics.DrawString("github.com/StrayWang/wdm_skills", $bodyFont, $mutedBrush, 332, 518)
 
 $bitmap.Save($outputPath, [System.Drawing.Imaging.ImageFormat]::Png)
 

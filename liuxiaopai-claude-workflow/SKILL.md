@@ -2,7 +2,7 @@
 name: liuxiaopai-claude-workflow
 description: 刘小排「Claude Code 榜一大哥」AI 产品开发工作流。飞书需求文档 → Claude Code 实现 → 自动化测试 → 上线部署的完整流程。非程序员也能独立完成 AI 产品从 0 到 1。
 version: 1.0.0
-author: 7deer
+author: wdm
 tags: [claude-code, ai-workflow, product-development, solo-founder]
 ---
 

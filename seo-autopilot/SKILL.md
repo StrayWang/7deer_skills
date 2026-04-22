@@ -80,10 +80,10 @@ keywords: seo automation, keyword report, content freshness, landing page genera
 
 ```bash
 # 方式 1: 只复制这个 skill
-cp -r 7deer_skills/seo-autopilot .agent/skills/seo-autopilot
+cp -r wdm_skills/seo-autopilot .agent/skills/seo-autopilot
 
 # 方式 2: 克隆整个技能库
-git clone https://github.com/StrayWang/7deer_skills.git .agent/skills
+git clone https://github.com/StrayWang/wdm_skills.git .agent/skills
 ```
 
 ## 启动命令
