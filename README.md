@@ -25,7 +25,7 @@
 🔄 **内容自动同步** — `auto-page-sync` 让你只管往仓库写 Markdown，前端页面自动生成。配合 GitHub Actions 定时拉取，Google 爬虫看到的永远是最新内容。支持日报、博客、Changelog、Landing Page 等多种页面模式，一套机制复用所有项目。
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
-[![Skills](https://img.shields.io/badge/skills-25-blue.svg)](#-完整技能清单)
+[![Skills](https://img.shields.io/badge/skills-28-blue.svg)](#-完整技能清单)
 [![Agent Skills Standard](https://img.shields.io/badge/standard-Agent_Skills-8A2BE2.svg)](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
@@ -94,6 +94,8 @@ cp -r 7deer_skills/google-trends-to-pages .agent/skills/
 | 🔥 | **google-trends-to-pages** | 从 Google Trends 关键词自动生成 SEO 页面 | 90% | SEO 内容生产 |
 | 🔥 | **multi-ai-service-hub** | 5 分钟生成完整的 AI 工具/服务聚合页面 | 95% | AI 工具/服务网站 |
 | 🔥 | **ai-service-data-scraper** | 从 Trello/Discord/Reddit 抓取最新的服务情报数据 | 80% | 行业数据采集 |
+| 🔥 | **go-global-product-launch** | 出海 AI 产品从 0 到盈利完整闭环（哥飞 SEO × 刘小排 AI 产品方法论） | 95% | 出海 AI 工具站 |
+| 🔥 | **liuxiaopai-claude-workflow** | Claude Code 榜一大哥工作流（需求文档 → 分模块开发 → 自动化测试） | 85% | AI 产品独立开发 |
 
 ---
 
@@ -156,6 +158,13 @@ cp -r 7deer_skills/google-trends-to-pages .agent/skills/
 | # | 技能名称 | 描述 | 适用场景 |
 |---|---------|------|---------|
 | 25 | **favicon-icon-generator** | Favicon & Icon 生成器（SVG + PWA） | Web 应用图标系统 |
+
+### 出海创业 & AI 产品方法论
+| # | 技能名称 | 描述 | 适用场景 |
+|---|---------|------|---------|
+| 26 | **gefei-seo-monetization** | 哥飞「流量四板斧 + Adsense 变现」完整闭环（免费工具组合 + 哑炮词抢救 + 变现公式） | 独立站 / 内容站变现 |
+| 27 | **liuxiaopai-claude-workflow** | 刘小排「Claude Code 榜一大哥」AI 产品开发工作流（飞书需求文档 → 分模块实现 → 多模型协作） | AI 产品独立开发 |
+| 28 | **go-global-product-launch** | 出海 AI 产品从 0 到盈利完整闭环（需求验证 × 快速开发 × SEO 流量 × 变现路径） | 出海 AI 工具站 |
 
 ---
 
@@ -362,7 +371,11 @@ intent = classify_intent("best ai logo generator for small business")
 ├── rpg-stat-catalyst/                 # 数值计算核心
 ├── favicon-icon-generator/            # Favicon & Icon 生成器
 ├── gemini-thinking-protocol/          # 核心认知引擎
-└── plugin-architect/                  # AI Skills 构建标准
+├── plugin-architect/                  # AI Skills 构建标准
+│
+├── gefei-seo-monetization/            # 🆕 哥飞「流量四板斧 + Adsense 变现」
+├── liuxiaopai-claude-workflow/        # 🆕 刘小排 AI 开发工作流
+└── go-global-product-launch/          # 🆕 出海 AI 产品完整闭环
 ```
 
 ---
@@ -394,10 +407,10 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 ## 📊 技能统计
 
-- **总技能数**: 25 个
-- **P0 核心技能**: 3 个
-- **代码行数**: 15,000+ 行
-- **文档页数**: 70+ 页
+- **总技能数**: 28 个（新增 3 个出海创业技能）
+- **P0 核心技能**: 5 个
+- **代码行数**: 18,000+ 行
+- **文档页数**: 85+ 页
 - **时间节省**: 平均 80-95%
 
 ---
@@ -417,6 +430,14 @@ OPENAI_API_KEY=your_openai_api_key_here
 ---
 
 ## 📝 更新日志
+
+### 2026-04-22
+- 🆕 新增 **gefei-seo-monetization**（哥飞「流量四板斧 + Adsense 变现」完整闭环，含哑炮词抢救脚本）
+- 🆕 新增 **liuxiaopai-claude-workflow**（刘小排 Claude Code 工作流，含需求文档验证器 + 任务分解器 + 上下文管理器）
+- 🆕 新增 **go-global-product-launch**（出海 AI 产品完整闭环，整合哥飞 SEO 体系与刘小排 AI 产品方法论）
+- 📈 升级 **site-keyword-research** v2.1（新增哥飞「哑炮词抢救」模块 + 五维关键词可行性评估）
+- 📈 升级 **python-agent-engine** v1.1（新增刘小排三条铁律：需求文档验证器 + 任务分解器 + 上下文管理器）
+- 📊 技能总数从 25 → 28
 
 
 ### 2026-04-12

@@ -1,7 +1,10 @@
 ---
 name: site-keyword-research
+version: 2.1.0
 description: |
   整站关键词研究与深度挖掘。输入一个网站域名或URL，自动完成：首页主题分析 → 递归式关键词树扩展（Google联想词多级分叉）→ 去重合并 → 关键词分层 → 10词SERP详细分析 → 3词定方向，最终输出完整 Markdown 报告。
+  
+  核心改进（v2.1）：新增哥飞「哑炮词抢救」模块与五维评估体系。
   
   触发条件：用户说"分析网站关键词"、"关键词研究"、"keyword research"、"挖掘某网站的关键词"、或提供一个URL说"分析这个网站的SEO关键词机会"。
 ---
@@ -403,3 +406,143 @@ https://www.google.com/search?q=<URL编码关键词>&hl=en
 
 - 完整报告模板：`references/output-template.md`
 - 单关键词竞争度分析：`keyword-competition-analysis/SKILL.md`
+
+---
+
+## 🆕 v2.1 新增：哥飞「哑炮词抢救」模块
+
+> 来源：哥飞 SEO 方法论，适用于已有一定收录量的网站
+
+### 什么是哑炮词？
+
+哑炮词 = 在 Google Search Console 中，展示次数 > 100 但点击次数 < 10 的关键词。
+这说明谷歌认为你的页面与这个词相关，但用户不点击你的标题。
+
+### 哑炮词抢救流程
+
+```
+Step 1：在 GSC 中导出哑炮词清单
+筛选条件：展示次数 > 100，CTR < 5%
+```
+
+---
+
+```markdown
+Step 2：分析点击率低的原因
+常见原因：
+- Title 没有包含关键词（或位置太靠后）
+- Title 缺乏吸引力（没有数字、情绪词、利益点）
+- Meta Description 没有 CTA
+- SERP 竞争对手的标题更吸引人
+
+Step 3：用 AI 重写标题（批量处理）
+```
+
+```python
+# 哑炮词标题优化脚本
+# 文件路径：gefei-seo-monetization/scripts/rescue_dead_keywords.py
+
+import anthropic
+import csv
+import json
+
+client = anthropic.Anthropic()
+
+TITLE_REWRITE_PROMPT = """
+你是一位 SEO 专家，擅长撰写高点击率的页面标题。
+
+当前页面信息：
+- 原标题：{original_title}
+- 目标关键词：{keyword}
+- 当前展示次数：{impressions}
+- 当前点击率：{ctr}%
+- 竞争对手标题（SERP Top 3）：{competitor_titles}
+
+请生成 3 个优化版标题，要求：
+1. 关键词放在标题前半段
+2. 包含数字或具体利益点
+3. 长度 50~60 字符（英文）
+4. 避免标题党，保持真实性
+
+输出 JSON 格式：
+{{"titles": ["标题1", "标题2", "标题3"], "reasoning": "优化逻辑说明"}}
+"""
+
+def rescue_dead_keywords(input_csv: str, output_json: str):
+    """
+    输入：从 GSC 导出的哑炮词 CSV
+    输出：优化后的标题建议 JSON
+    """
+    results = []
+    
+    with open(input_csv, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if float(row.get('Impressions', 0)) > 100 and float(row.get('CTR', '0%').replace('%', '')) < 5:
+                prompt = TITLE_REWRITE_PROMPT.format(
+                    original_title=row.get('Page Title', ''),
+                    keyword=row.get('Query', ''),
+                    impressions=row.get('Impressions', ''),
+                    ctr=row.get('CTR', '').replace('%', ''),
+                    competitor_titles="（请手动填入 SERP 前3标题）"
+                )
+                
+                message = client.messages.create(
+                    model="claude-3-5-sonnet-20241022",
+                    max_tokens=500,
+                    messages=[{"role": "user", "content": prompt}]
+                )
+                
+                response_text = message.content[0].text
+                try:
+                    suggestion = json.loads(response_text)
+                except json.JSONDecodeError:
+                    suggestion = {"titles": [response_text], "reasoning": "解析失败，请手动处理"}
+                
+                results.append({
+                    "keyword": row.get('Query', ''),
+                    "original_title": row.get('Page Title', ''),
+                    "impressions": row.get('Impressions', ''),
+                    "current_ctr": row.get('CTR', ''),
+                    "suggested_titles": suggestion.get('titles', []),
+                    "reasoning": suggestion.get('reasoning', '')
+                })
+    
+    with open(output_json, 'w', encoding='utf-8') as f:
+        json.dump(results, f, ensure_ascii=False, indent=2)
+    
+    print(f"✅ 处理完成，共 {len(results)} 个哑炮词，结果已保存到 {output_json}")
+    return results
+
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) < 3:
+        print("用法：python rescue_dead_keywords.py input.csv output.json")
+    else:
+        rescue_dead_keywords(sys.argv[1], sys.argv[2])
+```
+
+```markdown
+Step 4：A/B 测试新标题
+- 修改页面 <title> 为推荐标题
+- 等待 2~4 周让 GSC 数据更新
+- 对比前后 CTR 变化
+- CTR 提升 > 50% → 成功；否则继续测试第二个标题
+
+## 🆕 v2.1 新增：哥飞「五维关键词可行性评估」
+
+在现有关键词筛选流程完成后，对 Top 候选词执行以下评估：
+
+| 维度 | 评分标准 | 权重 |
+|------|---------|------|
+| 搜索量 | 月搜 100~1000=3分，1000~10000=5分，>10000=2分（太难） | 20% |
+| 竞争度 KD | <15=5分，15~30=3分，>30=1分 | 30% |
+| 内容可生产性 | 我能写出比现有结果更好的内容？能=5分，勉强=3分，不能=1分 | 20% |
+| 变现路径 | Adsense CPC>$1=5分，$0.3~1=3分，<$0.3=1分 | 20% |
+| 时间窗口 | Google Trends 上上升=5分，平稳=3分，下降=1分 | 10% |
+
+综合评分 > 4.0 → 优先做
+综合评分 3.0~4.0 → 可做
+综合评分 < 3.0 → 跳过
+
